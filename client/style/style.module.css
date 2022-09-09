@@ -1,0 +1,35 @@
+.lightGreen {
+  background-color: rgb(0, 209, 52);
+}
+
+b.lightGreen:focus{
+  background-color: greenyellow;
+}
+
+.red {
+  background-color: red;
+}
+
+.main {
+  background-color: rgb(179, 254, 74);
+}
+
+.center {
+  text-align: center;
+}
+
+.piggy {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  width: 5%;
+}
+
+.strike {
+  color: red;
+  position:absolute;
+  font-size: 55px;
+  top:0;
+  left:20;
+}
