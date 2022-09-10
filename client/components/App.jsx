@@ -11,8 +11,9 @@ class App extends React.Component {
     this.state = {
       questions: null,
       prize: '$250',
-      strikes: null,
+      strikes: 0,
       score: 0,
+      totalQuestions: null,
       isWinner: null,
     };
 
@@ -20,8 +21,8 @@ class App extends React.Component {
     this.setScore = this.setScore.bind(this);
   }
 
-  setStrike(num) {
-    this.setState({strikes: num});
+  setStrike() {
+    this.setState({strikes: this.state.strikes + 1});
   }
 
   setScore() {
@@ -34,14 +35,14 @@ class App extends React.Component {
         type: 'GET',
         dataType: 'json',
         success: (data) => {
-          this.setState({ questions: data });
+          this.setState({ questions: data, totalQuestions: data.length });
         },
         error: function(err) {console.log(err)}
       });
   }
 
   render() {
-    if (this.state.score >= 8) {
+    if (this.state.score === 8) {
       return (
         <div>
           <div><Winner /></div>
@@ -56,10 +57,11 @@ class App extends React.Component {
     } else if (this.state.questions === null) {
       this.retrieve();
     } else {
+
       return (
         <div>
            <div>
-             <h2 className={styles.center}>Prize Money: $250</h2>
+             <h2 className={styles.center}>Prize Money: <span className={styles.prize}>{this.state.prize}</span></h2>
            </div>
            <div>
              <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSu5Jx0OFOeU1S0WTkLzIw2HYWFHjINvS0jYSuJv_tsDhbplbpp" className={styles.piggy}/>

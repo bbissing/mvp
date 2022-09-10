@@ -4,7 +4,7 @@ import Loser from './Loser.jsx';
 
 const Strike = (props) => {
   console.log('in Strikes', props);
-  if (props.strikes) {
+  if (props.strikes > 0) {
     if (props.strikes === 1) {
       return (
         <div>

@@ -14,15 +14,39 @@ b.lightGreen:focus{
   background-color: rgb(179, 254, 74);
 }
 
+.main_header {
+  color: rgb(2, 74, 141)
+}
+
 .center {
   text-align: center;
+}
+
+.challenge_answer {
+  cursor: pointer;
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+
+.center_win {
+  text-align: center;
+  color: rgb(1, 86, 22);
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.center_lost {
+  text-align: center;
+  color: rgb(132, 0, 0);
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
 .piggy {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 5%;
 }
 
@@ -32,4 +56,42 @@ b.lightGreen:focus{
   font-size: 55px;
   top:0;
   left:20;
+}
+
+#win_form_list {
+  list-style-type: none;
+}
+
+#lose_form_list {
+  list-style-type: none;
+}
+
+#win_submit {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5%;
+}
+
+#lose_next {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 5%;
+}
+
+.label {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.input {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.prize {
+  color: rgb(1, 86, 22);
 }

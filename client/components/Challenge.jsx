@@ -10,7 +10,7 @@ class Challenge extends React.Component {
       challenge: this.props.data,
       index: 0,
       style: null,
-      strikes: null
+      strikes: 0
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -23,39 +23,37 @@ class Challenge extends React.Component {
    console.log(e.target.childNodes[1].nodeValue === this.state.challenge[this.state.index].correct);
    if (e.target.childNodes[1].nodeValue === this.state.challenge[this.state.index].correct) {
      this.setState({style: styles.lightGreen});
-     this.props.setScore();
+     this.props.setScore(this.state.index);
    } else {
      this.setState({style: styles.red});
-     if (!this.state.strikes) {
+     if (this.state.strikes === 0) {
        this.setState({strikes: 1});
-       this.props.setStrike(1);
+       this.props.setStrike(this.state.index);
      } else {
-       this.props.setStrike(2);
+       this.props.setStrike(this.state.index);
      }
    }
    console.log(e);
   }
 
   render(){
-    console.log(this.state.challenge);
-    console.log(this.index);
     if (this.state.index === this.state.challenge.length - 1) {
       this.componentWillUnmount();
     }
 
     return (
       <div>
-        <div className={styles.center}> { this.state.challenge[this.state.index].question } </div>
-        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center}> A: { this.state.challenge[this.state.index].a } </div>
-        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center}> B: { this.state.challenge[this.state.index].b } </div>
-        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center}> C: { this.state.challenge[this.state.index].c } </div>
-        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center}> D: { this.state.challenge[this.state.index].d } </div>
+        <div><h4 className={styles.center + ' ' + styles.challenge_spacing}>{ this.state.challenge[this.state.index].question }</h4></div>
+        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center + ' ' + styles.challenge_answer}> A: { this.state.challenge[this.state.index].a } </div>
+        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center + ' ' + styles.challenge_answer}> B: { this.state.challenge[this.state.index].b } </div>
+        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center + ' ' + styles.challenge_answer}> C: { this.state.challenge[this.state.index].c } </div>
+        <div onClick={e => { this.handleClick(e); }} className={this.state.style + ' ' + styles.center + ' ' + styles.challenge_answer}> D: { this.state.challenge[this.state.index].d } </div>
       </div>
     );
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.setState({ challenge: this.props.data, index: this.state.index+1, style: null }), 5000);
+    this.interval = setInterval(() => this.setState({ challenge: this.props.data, index: this.state.index+1, style: null }), 10000);
   }
 
   componentWillUnmount() {
